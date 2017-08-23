@@ -18,6 +18,9 @@ class Vehicle
 end
 
 class Car < Vehicle
+  def initialize(input_options)
+    @fuel = input_options[:fuel]
+  end
   def honk_horn
     puts "Beeeeeeep!"
   end
