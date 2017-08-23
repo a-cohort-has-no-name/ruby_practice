@@ -18,6 +18,12 @@ class Employee
 end
 
 class Manager < Employee
+	attr_accessor :employees
+	def initialize(input_options)
+		super
+		@employees = input_options[:employees]
+	end
+
 	def send_email_report
 		puts "Sending email..."
 		# use some email library to do the thing
@@ -25,9 +31,12 @@ class Manager < Employee
 	end
 end
 
-manager = Manager.new(first_name: "Calvin", last_name: "Bartholow", salary: 90000, active: true)
+employee1 = Employee.new({first_name: "Majora", last_name: "Carter", salary: 80000, active: true})
+employee2 = Employee.new(first_name: "Danilo", last_name: "Campos", salary: 70000, active: true)
+manager = Manager.new(first_name: "Calvin", last_name: "Bartholow", salary: 90000, active: true, employees: [employee1, employee2])
 manager.print_info
 manager.send_email_report
+puts manager.employees
 
 
 
