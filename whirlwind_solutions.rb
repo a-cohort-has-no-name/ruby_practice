@@ -59,6 +59,10 @@
 #number of students times do ask the user for a student name
 #create array of students, put each student's name into array
 
+#if odd number of students:
+#shift 3 students out of the array the first time
+#then, shift out the reamining students by 2
+
 puts "How many students are in your class?"
 num_students = gets.chomp.to_i
 
@@ -69,10 +73,20 @@ num_students.times do
 	students << gets.chomp
 end
 
-# p students
-(num_students/2).times do
-	p students.slice!(0, 2)
+students.shuffle!
+
+if num_students.even?
+	(num_students/2).times do
+		p students.shift(2)
+	end
+else
+	p students.shift(3)
+	(students.length/2).times do
+		p students.shift(2)
+	end
 end
+
+
 
 
 
